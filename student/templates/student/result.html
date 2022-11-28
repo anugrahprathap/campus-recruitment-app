@@ -1,0 +1,51 @@
+{% extends "student/stubase.html" %}
+{% block stucontent %}
+{% load crispy_forms_tags %}
+
+
+    <h1>Placement Status</h1>
+    
+    <table border='2' class="table table-striped">
+        <tr class="table-primary">
+            <th>
+                Event Name
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Company Name
+            </th>
+            <th>
+                Reamrkas
+            </th>
+            
+    
+        </tr>
+       {% if data %}
+       
+        {% for event in data %}
+        <tr class="table-secondary"> 
+            <td>
+                {{event.event_id.eventname}}
+            </td>
+            <td>
+                {{event.event_id.date |date:'Y-m-d'}}
+            </td>
+            <td>
+                {{event.event_id.comp.comp_name}}
+            </td>
+            <td>
+                {{event.status}}
+            </td>
+           
+        </tr>
+    
+        {% endfor %}
+        {% endif %}
+    </table>
+    
+    {% endblock stucontent %} Applied</h1>
+
+
+  

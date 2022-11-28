@@ -1,0 +1,13 @@
+{% extends "student/stubase.html" %}
+{% block stucontent %}
+{% load crispy_forms_tags %}
+
+<h1>Student Home</h1>
+
+<a href= {% url 'Stuview'%}><button  class="btn btn-primary btn-lg active">View Events</button></a><br>
+
+<a href= {% url 'applied'%}><button  class="btn btn-primary btn-lg active">View Applied Events</button></a><br>
+<a href= {% url 'vewresults'%}><button  class="btn btn-primary btn-lg active">View Results</button></a>
+
+
+{% endblock stucontent %}

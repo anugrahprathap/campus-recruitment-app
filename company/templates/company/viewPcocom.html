@@ -1,0 +1,31 @@
+{% extends "company/base.html" %}
+{% block content %}
+{% load crispy_forms_tags %}
+<h1>Placemet Officers</h1>
+<table border='2' class="table table-hover">
+    <tr class="table-primary">
+        <th>
+            Officer Name
+        </th>
+        <th>
+          Phone No
+      </th>
+
+        <th>
+            Mail id
+        </th>
+
+    </tr>
+{% if pco %}
+{% for x in pco %}
+
+    <tr  class="table-light">
+      <td>{{ x.name }}</td>
+        <td>{{ x.mobile }}</td>
+      <td>{{ x.mail }}</td>
+    </tr>
+  {% endfor %}
+
+  {% endif %}
+</table>
+{% endblock content %}

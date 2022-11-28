@@ -1,0 +1,68 @@
+{% extends "faculty/base.html" %}
+
+{% block content %}
+
+
+<form method="POST" enctype="multipart/form-data">
+  {% if form.errors %}
+  {% for field in form %}
+      {% for error in field.errors %}
+          <div class="alert alert-danger alert-dismissable">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <strong>{{ field.label }}: {{ error|escape }}</strong>
+          </div>
+      {% endfor %}
+  {% endfor %}
+{% endif %}
+    
+    {% csrf_token %}
+    <section class="vh-100" style="background-color: ;border-radius: 8   ;">
+      <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-xl-9">
+    <center>
+            <h1 class="mb-4 pb-2 pb-md-0 mb-md-5" >Recruter Registration</h1></center>
+            
+    
+            <div class="card" style="border-radius: 15px;">
+              <div class="card-body">
+                
+    
+                <div >
+                  
+                  <div >
+
+          {% for field in form %}
+          <div class="row align-items-center">
+            <div class="col-md-3 ps-5">
+          <hr class="mx-n3">
+          
+              <label class="mb-0" for="id_{{ field.name }}">{{ field.label }}</label>
+            </div>
+              <div class="col-md-9 pe-5">
+              <input type="{{ field.field.widget.input_type }}" class="form-control form-control-lg" name="{{ field.name }}"
+                id="id_{{ field.name }}" placeholder="{{ field.field.widget.attrs.placeholder }}">
+            </div>
+          </div>
+
+          {% endfor %} 
+          <hr class="mx-n3">
+    
+          <div class="px-5 py-4">
+            <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+</section>
+  
+
+
+  </form>
+   
+ {% endblock content %}

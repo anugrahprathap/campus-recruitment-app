@@ -1,0 +1,8 @@
+{% extends "company/base.html" %}
+{% block content %}
+{% load crispy_forms_tags %}
+<h1>Recruiter Home</h1>
+<a href="../../viewStudentcom"><button  class="btn btn-primary btn-lg active">View Students</button></a>
+<a href= {% url 'viewPcocom'%}><button  class="btn btn-primary btn-lg active">View Placement Officers</button></a><br>
+
+{% endblock content %}

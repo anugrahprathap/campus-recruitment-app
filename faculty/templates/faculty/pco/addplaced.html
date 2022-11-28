@@ -1,0 +1,125 @@
+{% extends "faculty/pco/Pcobase.html" %}
+{% block pcocontent %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% load i18n %}
+
+<h1>Add Placed students </h1>
+<form method='POST' enctype="multipart/form-data">
+  {% csrf_token %}
+<div class="row align-items-center py-3">
+    <div class="col-md-3 ps-5">
+
+      <h6 class="mb-0">Event Name</h6>
+
+    </div>
+    <div class="col-md-9 pe-5">
+
+        <select name='eneme' class="custom-select">
+          {%if value %}
+          <option value=''>------Select------</option>
+          {%for value in value %}  
+          
+          <option name="eneme" value="{{value.id}}"  >{{value.eventname}}</option>
+        {% endfor %}
+      {% endif %}
+        </select>
+        
+
+    </div>
+  </div>
+
+  <div class="px-5 py-4">
+    <button type="submit" class="btn btn-primary btn-lg" name='button' value='selevent'>Submit</button>
+  </div>
+
+{% if students %}
+
+{% comment %} <div class="col-md-9 pe-5">
+  <input type="text" id="search" placeholder="Search">
+</div> {% endcomment %}
+<div id='original'>
+  <table border='2' class="table table-striped">
+    <tr class="table-primary">
+        <th>
+            Student Name
+        </th>
+        <th>
+          CGPA
+        </th>
+        <th>
+            Resume
+        </th>
+        <th>
+            Phone
+        </th>
+
+        <th>#</th>
+    </tr>
+    {% for row in students %}
+    <tr class="table-secondary">
+        <td>
+            {{ row.student_id.name}}
+        </td>
+        <td>
+            {{row.student_id.cgpa}}
+        </td>
+        <td>
+            <a href="{{row.student_id.resume}}">{{ row.student_id.name}}</a>
+        </td>
+        <td>
+            {{row.student_id.mobile }}
+        </td>
+        <td>
+            
+            {% if row.status == 'pending'%}
+            <input type="checkbox" name='check' value ='{{row.stu_id}}'>
+            {% else %}
+            {% comment %} <button name='button' type="submit" value='add'>add</button> {% endcomment %}
+            <input type="checkbox" name='check' value ='{{row.stu_id}}' checked>
+            {% endif %}
+        </td>
+
+    </tr>
+
+    {% endfor %}
+    <tr class='table-light'><td colspan=5>
+        <input type='hidden' id="ename" name ='event_id' value='{{event}}'>
+    <button name="button" class="btn btn-primary btn-lg" value='submit' >Submit</button></td></tr>
+   
+  </table>
+</div>
+{% comment %} <div>
+  <table  id="tableoutput" border='2' class="table table-striped">
+    <thead>
+    <tr class="table-primary">
+        <th>
+            Student Name
+        </th>
+        <th>
+          CGPA
+        </th>
+        <th>
+            Resume
+        </th>
+        <th>
+            Phone
+        </th>
+
+        <th>#</th>
+    </tr>
+  </thead>
+  <tbody id ="output">
+
+
+  </tbody>
+  </table>
+</div> {% endcomment %}
+  {% endif %}
+</form>
+
+ {% comment %} <script src='{% static "js/search.js" %}'></script> {% endcomment %}
+
+
+{% endblock  %}

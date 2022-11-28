@@ -1,0 +1,58 @@
+{% extends "student/stubase.html" %}
+{% block stucontent %}
+{% load crispy_forms_tags %}
+
+<h1> Upcoming Events</h1>
+{% if message %}
+<script>
+    alert('{{ message }}');
+</script>
+{% endif %}
+{% if events %}
+    <form  method='POST' enctype="multipart/form-data">
+        {% csrf_token %}
+<table border='2' class="table table-striped">
+    <tr class="table-primary">
+        <th>
+            Event Name
+        </th>
+        <th>
+            Date
+        </th>
+        <th>
+            CGPA
+        </th>
+        <th>
+            Reamrkas
+        </th>
+        <th>
+            #
+        </th>
+
+    </tr>
+    
+    <tr class="table-secondary">
+        <td>
+            {{events.eventname}}
+        </td>
+        <td>
+            {{events.date | date:'Y-m-d'}}
+        </td>
+        <td>
+            {{events.cgpa}}
+        </td>
+        <td>
+            {{events.remarks}}
+        </td>
+        <td>
+            
+            <button class="btn btn-primary btn-lg active">Apply</button>
+            </form>
+        </td>
+    </tr>
+
+</form> 
+    {% endif %}
+</table>
+
+{% endblock stucontent %}

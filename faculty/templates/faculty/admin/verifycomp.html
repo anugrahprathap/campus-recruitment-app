@@ -1,0 +1,75 @@
+{% extends "faculty/admin/adminbase.html" %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+
+<form method='POST' enctype="multipart/form-data">
+  {% csrf_token %}
+{% if value %}
+    <br>
+<table border='2' style="border-radius:8px;" class="table table-striped">
+    <tr class="table-primary">
+        <th>
+            User Name
+        </th>
+      
+        <th>
+            Company Name
+        </th>
+        <th>
+          Location
+      </th>
+      <th>
+        Description
+    </th>
+    
+      <th>
+        Website
+    </th>
+    <th>
+      LinkedIn
+  
+  </th>
+
+        <th>
+          Phone No
+      </th>
+
+        <th>
+            Mail id
+        </th>
+        <th>Accpect/Reject</th>
+
+    </tr>
+    
+      
+    {% for x in value %}
+    <tr class="table-secondary">
+        
+            <td>{{ x.name }}</td>
+            <td>{{ x.comp_name }}</td>
+            <td>{{ x.location }}</td>
+            <td>{{ x.description }}</td>
+            <td><a href="{{ x.url }}" alt="#">{{x.comp_name}}</a></td>
+            <td><a href="{{ x.linkedin }}" alt="#">{{ x.linkedin }}</a></td>
+            <td>{{ x.mobile }}</td>
+            <td>{{ x.mail }}</td>
+            
+          
+        <td>
+            <input type="hidden" name="comid" value='{{x.login_id}}'>
+         
+            <button type="submit" name='action' class="btn-primary btn-lg active" value = "accpect">Approve</button>
+           
+            <button type="submit" name='action' class="btn-danger btn-lg active" value = "reject">Reject</button>
+        </td>
+    </tr>
+
+    {% endfor %}
+
+    {% endif %}
+</table>
+</form>
+
+ 
+{% endblock content %}

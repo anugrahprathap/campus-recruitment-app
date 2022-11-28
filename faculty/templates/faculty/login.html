@@ -1,0 +1,61 @@
+{% extends "faculty/base.html" %}
+{% block content %}
+{% comment %} {% load crispy_forms_tags %} {% endcomment %}
+
+<form method="POST">
+
+    {% csrf_token %}    
+  <section class="vh-100" style="background-color: ;border-radius: 8   ;">
+      <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-xl-9">
+    
+            <h1 class="mb-4 pb-2 pb-md-0 mb-md-5" >User Login</h1>
+    
+            <div class="card" style="border-radius: 15px;">
+              <div class="card-body">
+    
+                <div class="row align-items-center pt-4 pb-3">
+                  <div class="col-md-3 ps-5">
+    
+                    <h6 class="mb-0">User Name</h6>
+    
+                  </div>
+                  <div class="col-md-9 pe-5">
+                    
+                    <input type="text" class="form-control form-control-lg" name="name" />
+    
+                  </div>
+                </div>
+                <hr class="mx-n3">
+    
+                <div class="row align-items-center py-3">
+                  <div class="col-md-3 ps-5">
+    
+                    <h6 class="mb-0">Passsword</h6>
+    
+                  </div>
+                  <div class="col-md-9 pe-5">
+    
+                      <input type="Password" name="password" class="form-control form-control-lg" />
+    
+                  </div>
+                </div>
+                <hr class="mx-n3">
+    
+                <div class="px-5 py-4">
+                  <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                </div>
+    
+              </div>
+            </div>
+    
+          </div>
+        </div>
+      </div>
+      <div id="formFooter">
+          <a class="underlineHover" href="#">Forgot Password?</a>
+        </div>
+    </section>
+</form>
+{% endblock content %}

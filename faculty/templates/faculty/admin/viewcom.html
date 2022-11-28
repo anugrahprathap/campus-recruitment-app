@@ -1,0 +1,51 @@
+{% extends "faculty/admin/adminbase.html" %}
+{% block content %}
+{% load crispy_forms_tags %}
+<h1>Active Companies</h1>
+<table border='2' class="table table-striped">
+    <tr class="table-primary">
+      
+        <th>
+            Company Name
+        </th>
+        <th>
+          Location
+      </th>
+      <th>
+        Description
+    </th>
+    
+      <th>
+        Website
+    </th>
+    <th>
+      LinkedIn
+  
+  </th>
+
+        <th>
+          Phone No
+      </th>
+
+        <th>
+            Mail id
+        </th>
+
+    </tr>
+{% if com %}
+{% for x in com %}
+
+    <tr class="table-light">
+      <td>{{ x.comp_name }}</td>
+      <td>{{ x.location }}</td>
+      <td>{{ x.description }}</td>
+      <td><a href="{{ x.url }}" alt="#">{{x.comp_name}}</a></td>
+      <td><a href="{{ x.linkedin }}" alt="#">{{ x.linkedin }}</a></td>
+      <td>{{ x.mobile }}</td>
+      <td>{{ x.mail }}</td>
+    </tr>
+  {% endfor %}
+
+  {% endif %}
+</table>
+{% endblock content %}

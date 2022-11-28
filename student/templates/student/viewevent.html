@@ -1,0 +1,53 @@
+{% extends "student/stubase.html" %}
+{% block stucontent %}
+{% load crispy_forms_tags %}
+
+<h1> Upcoming Events</h1>
+
+<table border='2' class="table table-striped">
+    <tr class="table-primary">
+        <th>
+            Event Name
+        </th>
+        <th>
+            Date
+        </th>
+        <th>
+            CGPA
+        </th>
+        <th>
+            Remraks
+        </th>
+        <th>
+            #
+        </th>
+    </tr>
+    {% if events %}
+    {% for event in events %}
+    <tr class = "table-secondary">
+        <td>
+            {{event.eventname}}
+        </td>
+        <td>
+            {{event.date}}
+        </td>
+        <td>
+            {{event.cgpa}}
+        </td>
+        <td>
+            {{event.remarks}}
+        </td>
+        <td>
+            <form action="{% url 'apply' event.id %}" method='POST'>
+
+                {% csrf_token %}
+            <button class= "btn btn-primary btn-lg active" >Apply</button>
+            </form>
+        </td>
+    </tr>
+
+    {% endfor %}
+    {% endif %}
+</table>
+
+{% endblock stucontent %}

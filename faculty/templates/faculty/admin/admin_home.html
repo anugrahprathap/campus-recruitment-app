@@ -1,0 +1,11 @@
+{% extends "faculty/admin/adminbase.html" %}
+{% block content %}
+{% load crispy_forms_tags %}
+<center><h1 >Placement Management</h1></center>
+<a href= {% url 'addPco' %}><button  class="btn btn-primary btn-lg active">Add Placement Officer</button></a><br>
+<a href= {% url 'viewPco' %}><button  class="btn btn-primary btn-lg active">View Placement Officer</button></a><br>
+<a href= {% url 'approveCom' %}><button  class="btn btn-primary btn-lg active">Approve Company</button></a><br>
+<a href= {% url 'viwecom' %}><button  class="btn btn-primary btn-lg active">View Company</button></a>
+
+
+{% endblock content %}

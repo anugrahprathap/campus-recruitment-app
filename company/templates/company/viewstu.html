@@ -1,0 +1,72 @@
+{% extends "company/base.html" %}
+{% block content %}
+{% load crispy_forms_tags %}
+<h1>View Students</h1>
+<form method='POST' enctype="multipart/form-data">
+    {% csrf_token %}
+  <div class="row align-items-center py-3">
+      <div class="col-md-3 ps-5">
+  
+        <h6 class="mb-0">Event Name</h6>
+  
+      </div>
+      <div class="col-md-9 pe-5">
+  
+          <select name='eneme' class="custom-select">
+            {%if value %}
+            <option>------Select------</option>
+            {%for value in value %}  
+            
+            <option name="eneme" value="{{value.id}}"  >{{value.eventname}}</option>
+          {% endfor %}
+        {% endif %}
+          </select>
+          
+  
+      </div>
+    </div>
+  
+    <div class="px-5 py-4">
+      <button type="submit" class="btn btn-primary btn-lg" >Submit</button>
+    </div>
+  </form>
+  
+  {% if myval %}
+      
+  <table border='2' class="table table-striped">
+      <tr class="table-primary">
+          <th>
+              Student Name
+          </th>
+          <th>
+            CGPA
+          </th>
+          <th>
+              Resume
+          </th>
+          <th>
+              Phone
+          </th>
+  
+      </tr>
+      {% for row in myval %}
+      <tr class="table-secondary">
+          <td>
+              {{ row.name}}
+          </td>
+          <td>
+              {{row.cgpa}}
+          </td>
+          <td>
+              <a href="{{row.resume}}">{{ row.name}}</a>
+          </td>
+          <td>
+              {{row.mobile }}
+          </td>
+  
+      </tr>
+  
+      {% endfor %}
+      {% endif %}
+    </table>
+{% endblock content %}
