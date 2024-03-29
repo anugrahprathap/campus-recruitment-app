@@ -1,4 +1,4 @@
-FROM python:3.7-apline
+FROM python:3.7
 WORKDIR /code
 RUN apk add --no-cache gcc musl-dev linux-headers
 COPY requirements.txt requirements.txt
