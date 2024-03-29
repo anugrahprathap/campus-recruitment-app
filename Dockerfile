@@ -4,5 +4,5 @@ RUN apk add --no-cache gcc musl-dev linux-headers
 COPY requirements.txt requirements.txt
 RUN pip install requirements.txt
 EXPOSE 5000
-COPY ..
+COPY . .
 CMD ['python manage.py runserver']
