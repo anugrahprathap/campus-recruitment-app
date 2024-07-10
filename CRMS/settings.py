@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-eat-)m*!mhp#b2__0t46x=$w5gmfwj!i#4vx=07&!kn2omkhm3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://campus-recruitment-app.onrender.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
